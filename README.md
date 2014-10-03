@@ -2,8 +2,8 @@ ddi
 ===
 Djanky dependency injection for javascript
 
-[![browser support](https://ci.testling.com/$YOUR_USERNAME_HERE/max-by.png)
-](https://ci.testling.com/$YOUR_USERNAME_HERE/max-by)
+[![browser support](https://ci.testling.com/$apechimp/ddi.png)
+](https://ci.testling.com/$apechimp/ddi)
 
 Installation
 ------------
