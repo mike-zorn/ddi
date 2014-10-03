@@ -1,0 +1,45 @@
+{
+  "name": "ddi",
+  "version": "0.0.1",
+  "description": "djanky dependency injection",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apechimp/ddi.git"
+  },
+  "keywords": [
+    "dependency",
+    "injection",
+    "di"
+  ],
+  "author": "Mike Atkins <apeherder@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apechimp/ddi/issues"
+  },
+  "homepage": "https://github.com/apechimp/ddi",
+  "dependencies": {
+    "args-list": "^0.3.3",
+    "is-function": "^1.0.1",
+    "to-array": "^0.1.4"
+  },
+  "devDependencies": {
+    "tape": "^3.0.0"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  }
+}
