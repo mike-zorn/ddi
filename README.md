@@ -8,7 +8,7 @@ Djanky dependency injection for javascript
 Installation
 ------------
 
-``npm install --save ddi``
+[![npm install ddi](https://nodei.co/npm/ddi.png)](https://npmjs.org/package/ddi)
 
 Usage
 -----
