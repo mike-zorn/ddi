@@ -3,8 +3,8 @@ var to_array = require('to-array');
 var is_function = require('is-function');
 
 module.exports = function() {
-  return caller = function(func) {
-    return resolve.call(caller, func);
+  return caller = function() {
+    return resolve.apply(caller, to_array(arguments));
   }
 };
 
@@ -17,8 +17,27 @@ function removeAfterFirstUndefined(values) {
   return values;
 }
 
-function resolve(func) {
-  var args = args_list(func);
+function getArgs(stuff) {
+  var func = stuff.slice(-1)[0];
+
+  if(stuff.length === 1) {
+    return {
+      args: args_list(func),
+      func: func
+    };
+  }
+  else {
+    return {
+      args: stuff.slice(0, -1),
+      func: func
+    };
+  }
+}
+
+function resolve() {
+  var argsAndFunc = getArgs(to_array(arguments));
+  var args = argsAndFunc.args;
+  var func = argsAndFunc.func;
   var that = this;
 
   var values = removeAfterFirstUndefined(

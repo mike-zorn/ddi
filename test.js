@@ -1,5 +1,5 @@
 var test = require('tape');
-var create_scope = require('.');
+var create_scope = require('./index');
 
 test('should resolve a string', function(t) {
   var scope = create_scope(); 
@@ -10,6 +10,15 @@ test('should resolve a string', function(t) {
   })();
 });
 
+test('should resolve a dependency with angular style declaration', 
+function(t) {
+  var scope = create_scope(); 
+  scope.foo = 'bar';
+  scope('foo', function(lol) {
+    t.equal(lol, 'bar');
+    t.end();
+  })();
+});
 
 test('should resolve a dependency with a dependency', function(t) {
   var scope = create_scope(); 
