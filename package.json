@@ -1,6 +1,6 @@
 {
   "name": "ddi",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "djanky dependency injection",
   "main": "index.js",
   "scripts": {

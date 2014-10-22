@@ -14,10 +14,10 @@ test('should resolve a dependency with angular style declaration',
 function(t) {
   var scope = create_scope(); 
   scope.foo = 'bar';
-  scope('foo', function(lol) {
+  scope(['foo', function(lol) {
     t.equal(lol, 'bar');
     t.end();
-  })();
+  }])();
 });
 
 test('should resolve a dependency with a dependency', function(t) {
