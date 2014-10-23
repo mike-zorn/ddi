@@ -18,12 +18,12 @@ var create_scope = require('ddi');
 
 var scope = create_scope();
 
-scope.register('foo', 'bar');
+scope.foo = 'bar';
 scope(function(foo) {
   console.log(foo)
 })();
 ```
-yields ``bar``.
+yields `bar`.
 
 You can also "nest" dependencies.
 
@@ -37,4 +37,27 @@ scope(function(baz) {
   baz('pizza');
 })();
 ```
-yields ``bar pizza``.
+yields `bar pizza`. As well as use angular style dependency declaration.
+
+```javascript
+var create_scope = require('ddi');
+
+var scope = create_scope();
+
+scope.foo = 'bar';
+scope(['foo', function(lol) {
+  console.log(lol)
+})();
+```
+yields `bar`. Finally, `all_argments_resolved` will tell you whether or not
+more arguments need to be supplied to your function.
+```javascript
+var create_scope = require('ddi');
+
+var scope = create_scope();
+
+scope.foo = 'bar';
+var resolved = scope(function(foo) { });
+console.log(resolved.all_argments_resolved);
+```
+yields `true`.

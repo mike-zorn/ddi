@@ -32,3 +32,19 @@ test('should resolve a dependency with a dependency', function(t) {
     baz('pizza');
   })();
 });
+
+test('should have all_arguments_resolved be true', function(t) {
+  var scope = create_scope(); 
+  scope.foo = 'bar';
+  var resolved = scope(function(foo) { });
+  t.ok(resolved.all_arguments_resolved, 'all arguments resolved');
+  t.end();
+});
+
+test('should have all_arguments_resolved be false', function(t) {
+  var scope = create_scope(); 
+  scope.foo = 'bar';
+  var resolved = scope(function(foo, bar) { });
+  t.ok(!resolved.all_arguments_resolved, 'not all arguments resolved');
+  t.end();
+});

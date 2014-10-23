@@ -3,42 +3,42 @@ var to_array = require('to-array');
 var is_function = require('is-function');
 
 module.exports = function() {
-  return caller = function(funcOrArray) {
-    return resolve.call(caller, funcOrArray);
+  return caller = function(func_or_array) {
+    return resolve.call(caller, func_or_array);
   }
 };
 
-function removeAfterFirstUndefined(values) {
-  var firstUndefined = values.indexOf(undefined);
+function remove_after_first_undefined(values) {
+  var first_undefined = values.indexOf(undefined);
 
-  if(firstUndefined >= 0) {
-    values = values.slice(0, firstUndefined);
+  if(first_undefined >= 0) {
+    values = values.slice(0, first_undefined);
   }
   return values;
 }
 
-function getArgs(funcOrArray) {
-  if(is_function(funcOrArray)) {
+function get_args(func_or_array) {
+  if(is_function(func_or_array)) {
     return {
-      args: args_list(funcOrArray),
-      func: funcOrArray
+      args: args_list(func_or_array),
+      func: func_or_array
     };
   }
   else {
     return {
-      args: funcOrArray.slice(0, -1),
-      func: funcOrArray.slice(-1)[0]
+      args: func_or_array.slice(0, -1),
+      func: func_or_array.slice(-1)[0]
     };
   }
 }
 
-function resolve(funcOrArray) {
-  var argsAndFunc = getArgs(funcOrArray);
-  var args = argsAndFunc.args;
-  var func = argsAndFunc.func;
+function resolve(func_or_array) {
+  var args_and_func = get_args(func_or_array);
+  var args = args_and_func.args;
+  var func = args_and_func.func;
   var that = this;
 
-  var values = removeAfterFirstUndefined(
+  var values = remove_after_first_undefined(
     args.map(function(arg) {
       var value = that[arg];
       if(is_function(value)) {
@@ -48,7 +48,13 @@ function resolve(funcOrArray) {
     })
   );
 
-  return function() {
+  var resolved = function() {
     return func.apply(this, values.concat(to_array(arguments)));
   };
+
+  if(args.length === values.length) {
+    resolved.all_arguments_resolved = true;
+  }
+
+  return resolved;
 }
