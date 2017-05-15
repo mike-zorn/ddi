@@ -1,5 +1,7 @@
 ddi
 ===
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/apechimp/ddi.svg)](https://greenkeeper.io/)
 Djanky dependency injection for javascript
 
 [![browser support](https://ci.testling.com/apechimp/ddi.png)
