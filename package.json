@@ -27,7 +27,7 @@
     "to-array": "^0.1.4"
   },
   "devDependencies": {
-    "tape": "^3.0.0"
+    "tape": "^4.6.3"
   },
   "testling": {
     "files": "test/*.js",
